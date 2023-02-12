@@ -1,9 +1,13 @@
 {
   "name": "gpu-error-test",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "cy:chrome": "cypress run --browser chrome",
+    "cy:edge": "cypress run --browser edge",
+    "cy:electron": "cypress run --browser electron",
+    "cy:firefox": "cypress run --browser firefox",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

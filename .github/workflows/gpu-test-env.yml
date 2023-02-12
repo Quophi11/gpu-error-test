@@ -1,0 +1,41 @@
+name: gpu-test-env.yml
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  electron-env:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        browser: [electron, chrome, chromium, edge, firefox]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        env:
+          ELECTRON_EXTRA_LAUNCH_ARGS: '--disable-gpu'
+        with:
+          browser: ${{ matrix.browser }}
+
+  electron-env-debug:
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        browser: [electron, chrome, chromium, edge, firefox]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Cypress run debug
+        uses: cypress-io/github-action@v5
+        env:
+          DEBUG: '@cypress/github-action, cypress:*'
+          ELECTRON_EXTRA_LAUNCH_ARGS: '--disable-gpu'
+        with:
+          browser: ${{ matrix.browser }}

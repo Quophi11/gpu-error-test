@@ -2,7 +2,7 @@ name: gpu-test-base.yml
 on:
   push:
     branches:
-      - 'master'
+      - 'eagle1'
   pull_request:
   workflow_dispatch:
 
